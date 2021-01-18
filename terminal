@@ -1,0 +1,190 @@
+rc-9dgbg" deleted
+pod "my-nginx-rc-bgs68" deleted
+pod "my-nginx-rc-g7xmb" deleted
+pod "my-nginx-rc-j67jc" deleted
+pod "my-nginx-rc-nkw8c" deleted
+pod "my-nginx-rc-rzncx" deleted
+pod "my-nginx-rc-vvt7h" deleted
+pod "my-nginx-rc-w5qng" deleted
+pod "my-nginx-rc-zzrdl" deleted
+rhyme@ip-172-31-136-42:~/yml$ sudo kubectl get pods -l app=nginx
+NAME                READY   STATUS    RESTARTS   AGE
+my-nginx-rc-czh84   1/1     Running   0          31s
+my-nginx-rc-hmc7x   1/1     Running   0          31s
+my-nginx-rc-k97n2   1/1     Running   0          31s
+my-nginx-rc-pgdnt   1/1     Running   0          31s
+my-nginx-rc-pktgr   1/1     Running   0          31s
+my-nginx-rc-qfkdm   1/1     Running   0          31s
+my-nginx-rc-r9rb5   1/1     Running   0          31s
+my-nginx-rc-v8gnf   1/1     Running   0          31s
+my-nginx-rc-x9cm2   1/1     Running   0          31s
+my-nginx-rc-z2vtx   1/1     Running   0          31s
+rhyme@ip-172-31-136-42:~/yml$ sudo kubectl get rc
+NAME          DESIRED   CURRENT   READY   AGE
+my-nginx-rc   10        10        10      3m27s
+rhyme@ip-172-31-136-42:~/yml$ vi nginx_service.yml
+rhyme@ip-172-31-136-42:~/yml$ sudo kubectl apply -f nginx_service.yml
+service/my-ginx-service created
+rhyme@ip-172-31-136-42:~/yml$ sudo kubectl get svc
+NAME              TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE
+kubernetes        ClusterIP   10.96.0.1      <none>        443/TCP        105d
+my-ginx-service   NodePort    10.107.22.97   <none>        80:30189/TCP   18s
+rhyme@ip-172-31-136-42:~/yml$ ifconfig
+docker0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 172.17.0.1  netmask 255.255.0.0  broadcast 172.17.255.255
+        inet6 fe80::42:7fff:fe7a:e956  prefixlen 64  scopeid 0x20<link>
+        ether 02:42:7f:7a:e9:56  txqueuelen 0  (Ethernet)
+        RX packets 6083  bytes 416873 (416.8 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 6225  bytes 1898997 (1.8 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+ens5: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 9001
+        inet 172.31.136.42  netmask 255.255.128.0  broadcast 172.31.255.255
+        inet6 fe80::825:d0ff:fe35:7f5  prefixlen 64  scopeid 0x20<link>
+        ether 0a:25:d0:35:07:f5  txqueuelen 1000  (Ethernet)
+        RX packets 232013  bytes 330169831 (330.1 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 30229  bytes 4434840 (4.4 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 176766  bytes 39398054 (39.3 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 176766  bytes 39398054 (39.3 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+veth7909659: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet6 fe80::a82d:3eff:fe05:7ea7  prefixlen 64  scopeid 0x20<link>
+        ether aa:2d:3e:05:7e:a7  txqueuelen 0  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 36  bytes 5136 (5.1 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+veth148f7c8: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet6 fe80::4c91:fff:feee:e6fe  prefixlen 64  scopeid 0x20<link>
+        ether 4e:91:0f:ee:e6:fe  txqueuelen 0  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 36  bytes 5136 (5.1 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+veth15ed5f7: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet6 fe80::6ca4:e6ff:fe09:8283  prefixlen 64  scopeid 0x20<link>
+        ether 6e:a4:e6:09:82:83  txqueuelen 0  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 36  bytes 5136 (5.1 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+veth3b8814e: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet6 fe80::d41f:3ff:fe9a:a553  prefixlen 64  scopeid 0x20<link>
+        ether d6:1f:03:9a:a5:53  txqueuelen 0  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 36  bytes 5136 (5.1 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+veth4b61baa: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet6 fe80::90b5:a1ff:fe27:d92f  prefixlen 64  scopeid 0x20<link>
+        ether 92:b5:a1:27:d9:2f  txqueuelen 0  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 36  bytes 5136 (5.1 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+veth4dc5f62: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet6 fe80::f026:d1ff:fe60:4938  prefixlen 64  scopeid 0x20<link>
+        ether f2:26:d1:60:49:38  txqueuelen 0  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 36  bytes 5136 (5.1 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+veth51f950f: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet6 fe80::ec7a:33ff:fea0:54f2  prefixlen 64  scopeid 0x20<link>
+        ether ee:7a:33:a0:54:f2  txqueuelen 0  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 36  bytes 5136 (5.1 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+vetha45c7af: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet6 fe80::5406:76ff:fe5b:9de9  prefixlen 64  scopeid 0x20<link>
+        ether 56:06:76:5b:9d:e9  txqueuelen 0  (Ethernet)
+        RX packets 3036  bytes 250647 (250.6 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 3203  bytes 960948 (960.9 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+vethb7a7430: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet6 fe80::b053:dff:fead:fe08  prefixlen 64  scopeid 0x20<link>
+        ether b2:53:0d:ad:fe:08  txqueuelen 0  (Ethernet)
+        RX packets 3047  bytes 251388 (251.3 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 3184  bytes 959250 (959.2 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+vethbdbfe78: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet6 fe80::cf6:22ff:fe93:beec  prefixlen 64  scopeid 0x20<link>
+        ether 0e:f6:22:93:be:ec  txqueuelen 0  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 36  bytes 5136 (5.1 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+vethd7d7f0b: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet6 fe80::64d1:2ff:fecf:417a  prefixlen 64  scopeid 0x20<link>
+        ether 66:d1:02:cf:41:7a  txqueuelen 0  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 86  bytes 11254 (11.2 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+vethe325346: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet6 fe80::5448:57ff:fe43:8c83  prefixlen 64  scopeid 0x20<link>
+        ether 56:48:57:43:8c:83  txqueuelen 0  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 36  bytes 5136 (5.1 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+vetheed9de2: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet6 fe80::ece5:6eff:fe47:475d  prefixlen 64  scopeid 0x20<link>
+        ether ee:e5:6e:47:47:5d  txqueuelen 0  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 36  bytes 5136 (5.1 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+rhyme@ip-172-31-136-42:~/yml$ ^C
+rhyme@ip-172-31-136-42:~/yml$ vi nginx_deployment.yml
+rhyme@ip-172-31-136-42:~/yml$ sudo kubectl apply -f nginx_deployment.yml
+deployment.apps/nginx-deployment created
+rhyme@ip-172-31-136-42:~/yml$ sudo kubectl get deployment
+NAME               READY   UP-TO-DATE   AVAILABLE   AGE
+nginx-deployment   5/5     5            5           23s
+rhyme@ip-172-31-136-42:~/yml$ vi nginx_deployment.yml
+rhyme@ip-172-31-136-42:~/yml$ vi nginx_service.yml
+rhyme@ip-172-31-136-42:~/yml$ sudo kubectl apply -f nginx_service.yml
+service/my-ginx-service configured
+rhyme@ip-172-31-136-42:~/yml$ sudo kubectl get svc
+NAME              TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE
+kubernetes        ClusterIP   10.96.0.1      <none>        443/TCP        105d
+my-ginx-service   NodePort    10.107.22.97   <none>        80:30189/TCP   23m
+rhyme@ip-172-31-136-42:~/yml$ vi nginx_deployment.yml
+rhyme@ip-172-31-136-42:~/yml$ sudo kubectl apply -f nginx_deployment.yml
+deployment.apps/nginx-deployment configured
+rhyme@ip-172-31-136-42:~/yml$ sudo kubectl rollout history deploy nginx-deployment
+deployment.extensions/nginx-deployment 
+REVISION  CHANGE-CAUSE
+1         <none>
+2         <none>
+
+rhyme@ip-172-31-136-42:~/yml$ sudo kubectl rollout undo deploy nginx-deployment --to-revision=1
+deployment.extensions/nginx-deployment rolled back
+rhyme@ip-172-31-136-42:~/yml$ 
